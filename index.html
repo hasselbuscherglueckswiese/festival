@@ -14,110 +14,61 @@
 <body>
     <header>
         <nav>
-            <h1 class="title ft_emynam">Festival <span class="secondary-color">Hasselbuscher Glückswiese</span></h1>
+            <h1 class="title">Festival Hasselbuscher Glückswiese</h1>
         </nav>
     </header>
 
     <main>
-        <p class="ft_brave">Wilkommen zu "Festival und Freunde" im schoenen Voigtei - Hier tanzen sogar die Schafe</p>
+        <p>Wilkommen zu "Festival von friendz für friendz" in Voigtei - Hier tanzen sogar die Kühe mit
+            den Schafen</p>
 
-        <!-- SAVE THE DATE -->
-        <div class="block">
-            <h2 class="secondary-color">Save the DATE</h2>
-            <table>
-                <tbody>
-                    <tr>
-                        <td class="ft_white-on-black">Wo?</td>
-                        <td><a href="https://maps.app.goo.gl/FbyRVrLbfE3YU8nu7" target="_blank">An der Wieser 123,
-                                234243 Voigtei </a></td>
-                    </tr>
-                    <tr>
-                        <td class="ft_white-on-black">Wann?</td>
-                        <td>18.07. - 20.07.2025</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <!-- LINE UP -->
-        <div class="block">
-            <h2 class="secondary-color">LINE UP</h2>
-            <span class="underline">18.07.2025</span>
-            <table class="space">
-                <tbody>
-                    <tr>
-                        <td>10:00 - 14:00</td>
-                        <td>DJ CHEF</td>
-                    </tr>
-                    <tr>
-                        <td>14:00 - 18:00</td>
-                        <td>TESTOMAKOK</td>
-                    </tr>
-                </tbody>
-            </table>
-            <span class="underline">19.07.2025</span>
-            <table class="space">
-                <tbody>
-                    <tr>
-                        <td>10:00 - 14:00</td>
-                        <td>DJ MAUS</td>
-                    </tr>
-                    <tr>
-                        <td>14:00 - 18:00</td>
-                        <td>FIRDOLON</td>
-                    </tr>
-                </tbody>
-            </table>
-            <span class="underline">20.07.2025</span>
-            <table class="space">
-                <tbody>
-                    <tr>
-                        <td>10:00 - 14:00</td>
-                        <td>MC KLARE</td>
-                    </tr>
-                    <tr>
-                        <td>14:00 - 18:00</td>
-                        <td>MUME</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="block" id="anmeldung">
+            <h2>ANMELDUNG</h2>
 
-        <div class="block">
-            <h2 class="secondary-color">ANMELDUNG</h2>
-            
             <form action="https://formspree.io/f/mqaqkooy" method="POST" id="form">
                 <label>
                     Deine E-Mail:
-                    <input type="email" name="email">
+                    <input type="email" name="E-mail">
                 </label>
                 <label>
                     Dein Name:
-                    <input type="text" name="name" id="name" />
+                    <input type="text" name="Name" id="Name" />
                 </label>
                 <label>
                     Wer hat die diesen Link geschickt?:
-                    <input type="text" name="reference" id="reference" />
+                    <input type="text" name="Link von" id="Link von" />
                 </label>
-                <!-- your other form fields go here -->
-                <button type="submit">Abschicken</button>
-            </form>
-    
-            <div id="information" style="display:none">
-                Hier könnten Informationen zur Telegram Gruppe stehen
-            </div>
-         <div>   
-        
 
+                <div class="g-recaptcha" data-sitekey="6LfifCMrAAAAAD8f9bAAyESBMan7vT7bFKQ9QOn8"></div>
+
+                <button type="submit">Anmelden</button>
+            </form>
+        </div>
+        <div class="block" id="information" style="display:none">
+            <h2>Nächste Schritte</h2>
+            <ul>
+                <li>1. Telegram Gruppe beitreten: https://fldkjaösdlfjöasjldfjasdf</li>
+                <li>2. Festivalgebühren an Bankverbindung überweise</li>
+            </ul>
+        </div>
+
+        <!-- reCAPTCHA Script -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script>
             const form = document.getElementById('form');
+            const anmeldung = document.getElementById('anmeldung');
             const information = document.getElementById('information');
 
             form.addEventListener('submit', async function (e) {
+                const recaptcha = grecaptcha.getResponse();
+                if (!recaptcha) {
+                    e.preventDefault();
+                    return alert("Bitte bestätige Sie, dass Sie ein Mensch sind!");
+                }
+
                 e.preventDefault();
-
                 const formData = new FormData(form);
-
                 try {
                     const response = await fetch(form.action, {
                         method: form.method,
@@ -127,10 +78,11 @@
                         }
                     });
 
+                    console.log(response)
                     if (response.ok) {
-                        information.style.display = "block";
                         form.reset();
-                        form.style.display = "none";
+                        anmeldung.style.display = "none";
+                        information.style.display = "block";
                     }
                 } catch (error) {
                     console.log(error)
