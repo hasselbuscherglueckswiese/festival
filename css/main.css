@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "Super Brave";
+    src: url('../fonts/Super\ Brave.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Emynam Crew";
+    src: url('../fonts/EmynamCrew-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "White on Black";
+    src: url('../fonts/White\ On\ Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Love";
+    src: url('../fonts/Demo\ Love\ Struck-Regular.otf') format('truetype');
+}
+
+.ft_brave {
+    font-family: 'Super Brave';
+}
+
+.ft_white-on-black {
+    font-family: 'White on Black';
+}
+
+.ft_love {
+    font-family: 'Love';
+}
+
+.ft_emynam {
+    font-family: 'Emynam Crew';
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.block {
+    margin-top: 40px;
+}
+
+.section {
+    margin-top: 100px;
+}
+
+.space {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.25),
+            rgba(0, 0, 0, 0.25)), url('../images/bg.rocket.png');
+    background-size: 50px;
+    color: white;
+    font-family: 'Love';
+    letter-spacing: .2rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: white;
+}
+
+h1,
+p {
+    padding: 5px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    padding: 0px 20px 15px 20px;
+}
+
+.secondary-color {
+    color: #ff5a2f;
+}
+
+.title {
+    letter-spacing: .2rem;
+}
+
+.menue {
+    display: flex;
+}
+
+.drinks {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 900px;
+}

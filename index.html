@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Festival Hasselbuscher Glückswiese</title>
+    <!-- <meta name="description" content=""> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1 class="title ft_emynam">Festival <span class="secondary-color">Hasselbuscher Glückswiese</span></h1>
+        </nav>
+    </header>
+
+    <main>
+        <p class="ft_brave">Wilkommen zu "Festival und Freunde" im schoenen Voigtei - Hier tanzen sogar die Schafe</p>
+
+        <!-- SAVE THE DATE -->
+        <div class="block">
+            <h2 class="secondary-color">Save the DATE</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="ft_white-on-black">Wo?</td>
+                        <td><a href="https://maps.app.goo.gl/FbyRVrLbfE3YU8nu7" target="_blank">An der Wieser 123,
+                                234243 Voigtei </a></td>
+                    </tr>
+                    <tr>
+                        <td class="ft_white-on-black">Wann?</td>
+                        <td>18.07. - 20.07.2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- LINE UP -->
+        <div class="block">
+            <h2 class="secondary-color">LINE UP</h2>
+            <span class="underline">18.07.2025</span>
+            <table class="space">
+                <tbody>
+                    <tr>
+                        <td>10:00 - 14:00</td>
+                        <td>DJ CHEF</td>
+                    </tr>
+                    <tr>
+                        <td>14:00 - 18:00</td>
+                        <td>TESTOMAKOK</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span class="underline">19.07.2025</span>
+            <table class="space">
+                <tbody>
+                    <tr>
+                        <td>10:00 - 14:00</td>
+                        <td>DJ MAUS</td>
+                    </tr>
+                    <tr>
+                        <td>14:00 - 18:00</td>
+                        <td>FIRDOLON</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span class="underline">20.07.2025</span>
+            <table class="space">
+                <tbody>
+                    <tr>
+                        <td>10:00 - 14:00</td>
+                        <td>MC KLARE</td>
+                    </tr>
+                    <tr>
+                        <td>14:00 - 18:00</td>
+                        <td>MUME</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="counter">0</div>
+        <button onclick="increment()">Hochzählen</button>
+
+        <script>
+            let count = 0;
+        
+            function increment() {
+              count++;
+              document.getElementById("counter").textContent = count;
+            }
+          </script>
+        <!-- <div class="menue">
+                <img class="drinks" src="./images/drink_card_white.png" alt="Getränkekarte"/>
+            </div> -->
+    </main>
+
+</body>
+
+</html>
