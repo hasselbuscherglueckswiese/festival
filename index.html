@@ -83,20 +83,61 @@
             </table>
         </div>
 
-        <div id="counter">0</div>
-        <button onclick="increment()">Hochzählen</button>
+        <div class="block">
+            <h2 class="secondary-color">ANMELDUNG</h2>
+            
+            <form action="https://formspree.io/f/mqaqkooy" method="POST" id="form">
+                <label>
+                    Deine E-Mail:
+                    <input type="email" name="email">
+                </label>
+                <label>
+                    Dein Name:
+                    <input type="text" name="name" id="name" />
+                </label>
+                <label>
+                    Wer hat die diesen Link geschickt?:
+                    <input type="text" name="reference" id="reference" />
+                </label>
+                <!-- your other form fields go here -->
+                <button type="submit">Abschicken</button>
+            </form>
+    
+            <div id="information" style="display:none">
+                Hier könnten Informationen zur Telegram Gruppe stehen
+            </div>
+         <div>   
+        
 
         <script>
-            let count = 0;
-        
-            function increment() {
-              count++;
-              document.getElementById("counter").textContent = count;
-            }
-          </script>
-        <!-- <div class="menue">
-                <img class="drinks" src="./images/drink_card_white.png" alt="Getränkekarte"/>
-            </div> -->
+            const form = document.getElementById('form');
+            const information = document.getElementById('information');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        information.style.display = "block";
+                        form.reset();
+                        form.style.display = "none";
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            });
+        </script>
+
     </main>
 
 </body>
