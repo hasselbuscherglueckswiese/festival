@@ -165,7 +165,7 @@
             const anmeldung = document.getElementById('anmeldung');
             const information = document.getElementById('information');
             const reset = document.getElementById("reset");
-            let clickCount = 0;
+            let clicked = false;
             const rufus = document.getElementById("rufus");
             const wuff = document.getElementById("wuff");
 
@@ -222,20 +222,15 @@
                 }
             });
 
-            rufus.addEventListener('touchend', function (event) {
-                const now = new Date().getTime();
-                if (now - lastTouchEnd <= 300) {
-                    event.preventDefault(); // verhindert Doppeltipp-Zoom
-                }
-                lastTouchEnd = now;
-            }, false);
-
             rufus.addEventListener("click", () => {
-                if (++clickCount == 3) {
-                    clickCount = 0;
-                    wuff.play();
-                    rufusDance();
-                }
+                if (clicked) return;
+                clicked = true;
+                wuff.play();
+                rufusDance();
+                setTimeout(() => {
+                    clicked = false;
+                }, 7000);
+
             });
 
             function rufusDance() {
