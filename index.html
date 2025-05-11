@@ -222,6 +222,13 @@
                 }
             });
 
+            rufus.addEventListener('touchend', function (event) {
+                const now = new Date().getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault(); // verhindert Doppeltipp-Zoom
+                }
+                lastTouchEnd = now;
+            }, false);
 
             rufus.addEventListener("click", () => {
                 if (++clickCount == 3) {
