@@ -12,45 +12,150 @@
 </head>
 
 <body>
-    <header>
+    <header style="position: relative; height: 225px;">
         <nav>
-            <h1 class="title">Festival Hasselbuscher Glückswiese</h1>
+            <h1 class="title" style="color: black; text-align: center;">Festival Hasselbuscher Glückswiese</h1>
         </nav>
+
+        <!-- Linkes Bild -->
+        <img src="./images/Blume.png"
+            style="position: absolute; left: 55px; top: 100px; height: 120px; transform: translateX(-50%);" />
+
+        <!-- Rechtes Bild -->
+        <img src="./images/Rufus.png"
+            style="position: absolute; right: 40px; top: 60px; height: 225px; transform: translateX(50%);z-index: 999;"
+            id="rufus" />
+
+        <audio id="wuff" src="./sounds/wuff.mp3" preload="auto"></audio>
+
+
+        <!-- Datum -->
+        <span style="position: absolute; left: 20px; top:135px; color:black">18 -<br>20.JULI</span>
+
+        <!-- Slogan -->
+        <span style="position: absolute; right: 5px; top:80px; color:black; font-size: 10px;">von friendz für
+            friendz</span>
     </header>
 
+
     <main>
-        <p>Wilkommen zu "Festival von friendz für friendz" in Voigtei - Hier tanzen sogar die Kühe mit
-            den Schafen</p>
 
-
-        <div class="block" id="anmeldung">
-            <h2>ANMELDUNG</h2>
+        <div id="anmeldung">
+            <h2>Registrierung</h2>
 
             <form action="https://formspree.io/f/mqaqkooy" method="POST" id="form">
                 <label>
-                    Deine E-Mail:
-                    <input type="email" name="E-mail">
+                    <span>Vor- & Nachname:<span style="color:red">*</span></span>
+                    <input type="text" name="Vor- & Nachname" required>
                 </label>
                 <label>
-                    Dein Name:
-                    <input type="text" name="Name" id="Name" />
+                    <span>Aus welcher Stadt fährst du zum Festival?:<span style="color:red">*</span></span>
+                    <input type="text" name="Aus welcher Stadt fährst du zum Festival?" required />
                 </label>
                 <label>
-                    Wer hat die diesen Link geschickt?:
-                    <input type="text" name="Link von" id="Link von" />
+                    <span>Wie kommst du zum Festival?:<span style="color:red">*</span></span>
+                    <input type="text" name="Wie kommst du zum Festival?" placeholder="z.B: Bahn, Auto, ..." required />
+                </label>
+                <label>
+                    <span>Wer hat dich eingeladen?:<span style="color:red">*</span></span>
+                    <input type="text" name="Wer hat dich eingeladen? (BezugspersonS)" required />
+                </label>
+                <label>
+                    <span>E-Mail:<span style="color:red">*</span></span>
+                    <input type="email" name="E-Mail" required />
+                </label>
+
+                <label>
+                    Hast du noch weitere Ideen:
+                    <textarea name="Weitere Ideen?"
+                        placeholder="z.B: Ich möchte einen Mini-Workshop anbieten..."></textarea>
                 </label>
 
                 <div class="g-recaptcha" data-sitekey="6LfifCMrAAAAAD8f9bAAyESBMan7vT7bFKQ9QOn8"></div>
 
-                <button type="submit">Anmelden</button>
+                <button type="submit">Registierung abschicken</button>
             </form>
         </div>
+
+
         <div class="block" id="information" style="display:none">
+
+            <p style="color: #28a745;">Du hast dich erfolgreich registriert!</p>
             <h2>Nächste Schritte</h2>
-            <ul>
-                <li>1. Telegram Gruppe beitreten: https://fldkjaösdlfjöasjldfjasdf</li>
-                <li>2. Festivalgebühren an Bankverbindung überweise</li>
-            </ul>
+            <div>
+                <div class="info-box" style="margin-top: 0px;">
+                    <p class="underline" style="font-weight: bold;">1. Telegram Gruppe beitreten:</p>
+                    <div class="info">
+                        <span>
+                            Hier findest du den <a id="tele64" href="aHR0cHM6Ly90Lm1lLysySFhSNDlNTUM1ZzJOV0pp"
+                                target="_blank">Zugangslink</a>
+                            zu unserer Telegramgruppe, wo alle wichtigen Infos gepostet werden und ihr euch vernetzen
+                            könnt.
+                            Bittet tretet unbedingt bei!!!
+                        </span>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p class="underline" style="font-weight: bold;">2. Sparschweinchen füllen:</p>
+                    <div class="info">
+                        <div>
+                            Bitte fülle unser kleines Hasselbuscher Sparschweinchen mit einem Betrag von
+                            <span style="font-weight: 600;">60€</span> pro Person. Mit dem Beitrag bist du eingeplant.
+                            Wir haben versucht den Betrag so klein wie möglich zu halten, damit alle friendz kommen
+                            können.
+                            Davon werden Umkosten und der Aufbau des Festivals finanziert <span
+                                style="font-weight: 600;">(kein Gewinn!)</span>,
+                            weshalb wir nicht drum herum gekommen sind, von euch Geld zu verlangen. Wir hoffen du
+                            verstehst
+                            das!!
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <div class="underline" style="text-align-last: center;margin-bottom: 5px;">Bankverbindung:
+                            </div>
+                            <div id="bname">TWFybGEgR8O2ZGVrZXI=</div>
+                            <div id="bnum">REU2NCA1MDAxIDA1MTcgNTQ1NCA5MTQ5IDA1</div>
+                            <div>Verwendungszweck: Vorname, Nachname, Bezugsperson</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p class="underline" style="font-weight: bold;">3. Wichtige Informationen vorab:</p>
+                    <div class="info">
+                        Sooo ihr Süßmäuse,<br>
+                        nochmal ein paar wichtige Infos, damit wir alle eine wunderschöne Zeit haben werden!!!<br>
+                        Wir bereiten für euch einen riesen Spielplatz mit allem was das Herz begehrt vor, um gemeinsam
+                        ein
+                        unvergessliches Wochenende zu
+                        verbringen!!! Damit das Ganze dann aber auch wirklich toll wird, brauchen wir <span
+                            style="font-weight: 600;">EURE</span> Hilfe!!!<br>
+                        Denn das Festival funktioniert nur, wenn alle zusammen helfen und wir gemeinsam die
+                        Verantwortung
+                        übernehmen.<br>
+                        Damit ist gemeint, dass wir <span style="font-weight: 600;">Solischichten</span> machen werden
+                        für
+                        Bar, Runner, etc. und ihr euch da unbedingt
+                        eintragen müsst, weil wir das alleine nicht stemmen können. Wenn jede*r nur eine Schicht oder
+                        einen
+                        Workshop macht ist das wunderbar und reicht
+                        total aus, sodass man auch wirklich genug Zeit für Ekstase hat. :)))<br>
+                        Das wäre total super!!! <br>
+                        Und um ganz viel Spaß zusammen zu haben, achtet aufeinander und dann werden wir eine traumhafte
+                        Party haben jappi<br>
+                        <br>
+                        Lieeeeebe,
+                        <br>
+                        <br>
+                        Das Orga Team von der Hasselbuscher Glückswiese
+                    </div>
+                </div>
+
+                <p style="font-size: 9px;color: gray;margin-top: 20px;"><br><span class="underline"
+                        id="reset">Hier</span> kommst du zurück zur
+                    Registrierung</p>
+            </div>
+
         </div>
 
         <!-- reCAPTCHA Script -->
@@ -59,6 +164,36 @@
             const form = document.getElementById('form');
             const anmeldung = document.getElementById('anmeldung');
             const information = document.getElementById('information');
+            const reset = document.getElementById("reset");
+            let clickCount = 0;
+            const rufus = document.getElementById("rufus");
+            const wuff = document.getElementById("wuff");
+
+            const tele64 = document.getElementById('tele64');
+            tele64.href = atob(tele64.getAttribute('href'));
+
+            const bname = document.getElementById('bname');
+            bname.textContent = decodeURIComponent(escape(atob(bname.textContent)));
+            const bnum = document.getElementById('bnum');
+            bnum.textContent = decodeURIComponent(escape(atob(bnum.textContent)));
+
+            const registered = localStorage.getItem('registered');
+
+            function showDetails() {
+                form.reset();
+                anmeldung.style.display = "none";
+                information.style.display = "block";
+                localStorage.setItem('registered', true);
+            }
+
+            if (registered == 'true') {
+                showDetails();
+            }
+
+            reset.addEventListener('click', function () {
+                localStorage.removeItem('registered');
+                location.reload();
+            });
 
             form.addEventListener('submit', async function (e) {
                 const recaptcha = grecaptcha.getResponse();
@@ -80,14 +215,29 @@
 
                     console.log(response)
                     if (response.ok) {
-                        form.reset();
-                        anmeldung.style.display = "none";
-                        information.style.display = "block";
+                        showDetails();
                     }
                 } catch (error) {
                     console.log(error)
                 }
             });
+
+
+            rufus.addEventListener("click", () => {
+                if (++clickCount == 3) {
+                    clickCount = 0;
+                    wuff.play();
+                    rufusDance();
+                }
+            });
+
+            function rufusDance() {
+                rufus.classList.add("shake");
+
+                setTimeout(() => {
+                    rufus.classList.remove("shake");
+                }, 7000); // nach 7 Sekunden stoppen
+            }
         </script>
 
     </main>

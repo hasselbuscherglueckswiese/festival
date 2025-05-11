@@ -1,13 +1,7 @@
-/* @font-face {
-    font-family: "Super Brave";
-    src: url('../fonts/Super\ Brave.ttf') format('truetype');
+@font-face {
+    font-family: "Roc Grotesk";
+    src: url('../fonts/rocgrotesk-medium.otf') format('truetype');
 }
-
-
-.ft_brave {
-    font-family: 'Super Brave';
-} */
-
 
 .underline {
     text-decoration: underline;
@@ -29,20 +23,33 @@
 body {
     padding: 0px;
     margin: 0px;
-    /* background-image:
-        linear-gradient(rgba(0, 0, 0, 0.25),
-            rgba(0, 0, 0, 0.25)), url('../images/background.jpg');
+    height: 100vh;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url('../images/Hintergrund.jpg');
+    background-size: auto 100%;
+    /* Bild an Höhe anpassen */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: black;
+    /* Restlicher Hintergrund */
     color: white;
-    background-size: 100%; */
-    font-family: 'Love';
+    /* font-family: 'Roc Grotesk'; */
     letter-spacing: .2rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    overflow-x: hidden;
 }
 
-a {
-    color: white;
+html {
+    overflow-x: hidden !important;
+}
+
+main {
+    overflow-x: hidden;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 h1,
@@ -67,15 +74,64 @@ td {
     letter-spacing: .2rem;
 }
 
-.menue {
-    display: flex;
+.info-box {
+    margin-top: 50px;
+    padding: 5px;
 }
 
-.drinks {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 900px;
+.info {
+    /* text-align: justify;
+    text-align-last: left; */
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(-5deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    30% {
+        transform: rotate(-5deg);
+    }
+
+    40% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    70% {
+        transform: rotate(-5deg);
+    }
+
+    80% {
+        transform: rotate(5deg);
+    }
+
+    90% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.shake {
+    animation: shake 1s infinite;
 }
 
 form {
@@ -85,22 +141,24 @@ form {
     flex-direction: column;
     gap: 1em;
     font-family: sans-serif;
-  }
+}
 
-  label {
+label {
     display: flex;
     flex-direction: column;
-    font-weight: bold;
-  }
+    /* font-weight: bold; */
+    color: white;
+}
 
-  input, textarea {
+input,
+textarea {
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
-  }
+}
 
-  button {
+button {
     padding: 0.7em;
     background-color: #007bff;
     color: white;
@@ -108,8 +166,8 @@ form {
     border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
-  }
+}
 
-  button:hover {
+button:hover {
     background-color: #0056b3;
-  }
+}
