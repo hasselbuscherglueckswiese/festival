@@ -88,7 +88,7 @@
                 <button type="submit">Registierung abschicken</button>
 
                 <input type="hidden" name="_redirect"
-                    value="https://hasselbuscherglueckswiese.github.io/festival?registered=true" />
+                    value="https://hasselbuscherglueckswiese.github.io/festival?reg=true" />
             </form>
         </div>
 
@@ -222,7 +222,7 @@
             let registered = getCookie('registered');
             if (registered == null) {
                 const params = new URLSearchParams(window.location.search);
-                registered = params.get("registered");
+                registered = params.get("reg");
             }
 
 
