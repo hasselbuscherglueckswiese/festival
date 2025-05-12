@@ -197,17 +197,36 @@
             const bnum = document.getElementById('bnum');
             bnum.textContent = decodeURIComponent(escape(atob(bnum.textContent)));
 
-            const registered = localStorage.getItem('registered');
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+            }
 
+            function getCookie(name) {
+                const cookies = document.cookie.split(";");
+                for (let c of cookies) {
+                    const [key, value] = c.trim().split("=");
+                    if (key === name) {
+                        return decodeURIComponent(value);
+                    }
+                }
+                return null;
+            }
+
+            const registered = getCookie('registered');
 
             function showDetails() {
-                let fullname = localStorage.getItem('fullname');
+                let fullname = getCookie('fullname');
                 if (fullname == null || fullname.trim() == '') fullname = "schön dich zu sehen :)"
                 greeting.textContent = fullname;
                 form.reset();
                 anmeldung.style.display = "none";
                 information.style.display = "block";
-                localStorage.setItem('registered', true);
             }
 
             if (registered == 'true') {
@@ -241,7 +260,8 @@
                     console.log(response)
                     if (response.ok) {
                         const fullname = document.getElementById("person").value;
-                        localStorage.setItem('fullname', fullname);
+                        setCookie('registered', true, 356);
+                        setCookie('fullname', fullname, 356);
                         showDetails();
                     }
                 } catch (error) {
