@@ -54,7 +54,7 @@
             <form action="https://submit-form.com/5yEX6qdlN" method="POST" id="form">
                 <label>
                     <span>Vor- & Nachname:<span style="color:red">*</span></span>
-                    <input type="text" name="Vor- & Nachname" required>
+                    <input type="text" name="Vor- & Nachname" id="person" required>
                 </label>
                 <label>
                     <span>Aus welcher Stadt fährst du zum Festival?:<span style="color:red">*</span></span>
@@ -90,10 +90,14 @@
 
         <div class="block" id="information" style="display:none">
 
-            <p style="color: #28a745;">Du hast dich erfolgreich registriert!</p>
+            <p
+                style="color: #208838; background-color: rgba(255, 255, 255, 0.8); border-radius: 5px; font-weight: bold;">
+                <span style="color:black; font-weight: normal;">Hallo, <span id="greeting"></span></span><br><br>Du bist
+                erfolgreich registriert! Yippie.
+            </p>
             <h2>Nächste Schritte</h2>
             <div>
-                <div class="info-box" style="margin-top: 0px;">
+                <div class="info-box" style="margin-top: -15px;">
                     <p class="underline" style="font-weight: bold;">1. Telegram Gruppe beitreten:</p>
                     <div class="info">
                         <span>
@@ -174,6 +178,8 @@
             const form = document.getElementById('form');
             const anmeldung = document.getElementById('anmeldung');
             const information = document.getElementById('information');
+            const greeting = document.getElementById('greeting');
+
             // const reset = document.getElementById("reset");
             let clicked = false;
             const rufus = document.getElementById("rufus");
@@ -189,7 +195,11 @@
 
             const registered = localStorage.getItem('registered');
 
+
             function showDetails() {
+                let fullname = localStorage.getItem('fullname');
+                if (fullname == null || fullname.trim() == '') fullname = "schön dich zu sehen :)"
+                greeting.textContent = fullname;
                 form.reset();
                 anmeldung.style.display = "none";
                 information.style.display = "block";
@@ -202,6 +212,7 @@
 
             // reset.addEventListener('click', function () {
             //     localStorage.removeItem('registered');
+            //     localStorage.removeItem('fullname');
             //     location.reload();
             // });
 
@@ -225,6 +236,8 @@
 
                     console.log(response)
                     if (response.ok) {
+                        const fullname = document.getElementById("person").value;
+                        localStorage.setItem('fullname', fullname);
                         showDetails();
                     }
                 } catch (error) {
