@@ -166,7 +166,7 @@
             const form = document.getElementById('form');
             const anmeldung = document.getElementById('anmeldung');
             const information = document.getElementById('information');
-            const reset = document.getElementById("reset");
+            // const reset = document.getElementById("reset");
             let clicked = false;
             const rufus = document.getElementById("rufus");
             const wuff = document.getElementById("wuff");
@@ -192,10 +192,10 @@
                 showDetails();
             }
 
-            reset.addEventListener('click', function () {
-                localStorage.removeItem('registered');
-                location.reload();
-            });
+            // reset.addEventListener('click', function () {
+            //     localStorage.removeItem('registered');
+            //     location.reload();
+            // });
 
             form.addEventListener('submit', async function (e) {
                 const recaptcha = grecaptcha.getResponse();
