@@ -43,7 +43,7 @@
         <div id="anmeldung">
             <h2>Registrierung</h2>
 
-            <form action="https://formspree.io/f/mqaqkooy" method="POST" id="form">
+            <form action="https://submit-form.com/5yEX6qdlN" method="POST" id="form">
                 <label>
                     <span>Vor- & Nachname:<span style="color:red">*</span></span>
                     <input type="text" name="Vor- & Nachname" required>
@@ -74,6 +74,8 @@
                 <div class="g-recaptcha" data-sitekey="6LfifCMrAAAAAD8f9bAAyESBMan7vT7bFKQ9QOn8"></div>
 
                 <button type="submit">Registierung abschicken</button>
+
+                <input type="hidden" name="_redirect" value="https://hasselbuscherglueckswiese.github.io/festival/" />
             </form>
         </div>
 
@@ -151,9 +153,9 @@
                     </div>
                 </div>
 
-                <p style="font-size: 9px;color: gray;margin-top: 20px;"><br><span class="underline"
+                <!-- <p style="font-size: 9px;color: gray;margin-top: 20px;"><br><span class="underline"
                         id="reset">Hier</span> kommst du zurück zur
-                    Registrierung</p>
+                    Registrierung</p> -->
             </div>
 
         </div>
@@ -202,7 +204,7 @@
                     return alert("Bitte bestätige Sie, dass Sie ein Mensch sind!");
                 }
 
-                e.preventDefault();
+
                 const formData = new FormData(form);
                 try {
                     const response = await fetch(form.action, {
