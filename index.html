@@ -214,13 +214,6 @@
             //     return localStorage.getItem(name)
             // }
 
-
-            if (!registered) {
-                const params = new URLSearchParams(window.location.search);
-                registered = params.get("reg");
-            }
-
-
             function showDetails() {
                 // let fullname = getFromStorage('fullname');
                 let fullname = null;
@@ -231,6 +224,9 @@
                 information.style.display = "block";
             }
 
+            const params = new URLSearchParams(window.location.search);
+            const registered = params.get("reg");
+            
             if (registered == 'true') {
                 showDetails();
             }
@@ -264,7 +260,7 @@
                         // saveToStorage('registered', true);
                         // saveToStorage('fullname', fullname);
                         window.location.href = "https://hasselbuscherglueckswiese.github.io/festival/?reg=true";
-                        // showDetails();
+                        showDetails();
                     }
                 } catch (error) {
                     console.log(error)
