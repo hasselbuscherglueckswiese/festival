@@ -204,28 +204,15 @@
             const bnum = document.getElementById('bnum');
             bnum.textContent = decodeURIComponent(escape(atob(bnum.textContent)));
 
-            function setCookie(name, value, days) {
-                let expires = "";
-                if (days) {
-                    const date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+            function saveToStorage(name, value) {
+                localStorage.setItem(name, value);
             }
 
-            function getCookie(name) {
-                const cookies = document.cookie.split(";");
-                for (let c of cookies) {
-                    const [key, value] = c.trim().split("=");
-                    if (key === name) {
-                        return decodeURIComponent(value);
-                    }
-                }
-                return null;
+            function getFromStorage(name) {
+                return localStorage.getItem(name)
             }
 
-            let registered = getCookie('registered');
+            let registered = getFromStorage('registered');
             if (!registered) {
                 const params = new URLSearchParams(window.location.search);
                 registered = params.get("reg");
@@ -233,7 +220,7 @@
 
 
             function showDetails() {
-                let fullname = getCookie('fullname');
+                let fullname = getFromStorage('fullname');
                 if (fullname == null || fullname.trim() == '') fullname = "schön dich zu sehen :)"
                 greeting.textContent = fullname;
                 form.reset();
@@ -272,8 +259,8 @@
                     if (response.ok) {
                         e.preventDefault();
                         const fullname = document.getElementById("person").value;
-                        setCookie('registered', true, 356);
-                        setCookie('fullname', fullname, 356);
+                        saveToStorage('registered', true);
+                        saveToStorage('fullname', fullname);
                         showDetails();
                     }
                 } catch (error) {
