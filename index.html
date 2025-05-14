@@ -23,6 +23,8 @@
     <header style="position: relative; height: 225px;">
         <nav>
             <h1 class="title" style="color: black; text-align: center;">Festival Hasselbuscher Glückswiese</h1>
+
+            <div id="test"></div>
         </nav>
 
         <!-- Linkes Bild -->
@@ -213,6 +215,9 @@
             }
 
             let registered = getFromStorage('registered');
+            document.getElementById('test').textContent = "TEST: " + registered;
+
+            console.log(localStorage.getItem('registered'));
             if (!registered) {
                 const params = new URLSearchParams(window.location.search);
                 registered = params.get("reg");
