@@ -87,8 +87,9 @@
 
                 <button type="submit">Registierung abschicken</button>
 
-                <input type="hidden" name="_redirect"
-                    value="https://hasselbuscherglueckswiese.github.io/festival?reg=true" />
+                <!-- <input type="hidden" name="_redirect"
+                    value="https://hasselbuscherglueckswiese.github.io/festival?reg=true" /> -->
+                <!-- <input type="hidden" name="_redirect" value="http://127.0.0.1:5500/index.html?reg=true" /> -->
             </form>
         </div>
 
@@ -220,7 +221,7 @@
             }
 
             let registered = getCookie('registered');
-            if (registered == null) {
+            if (!registered) {
                 const params = new URLSearchParams(window.location.search);
                 registered = params.get("reg");
             }
@@ -252,7 +253,6 @@
                     return alert("Bitte bestätige Sie, dass Sie ein Mensch sind!");
                 }
 
-
                 const formData = new FormData(form);
                 try {
                     const response = await fetch(form.action, {
@@ -265,6 +265,7 @@
 
                     console.log(response)
                     if (response.ok) {
+                        e.preventDefault();
                         const fullname = document.getElementById("person").value;
                         setCookie('registered', true, 356);
                         setCookie('fullname', fullname, 356);
