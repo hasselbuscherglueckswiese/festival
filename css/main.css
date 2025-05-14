@@ -173,73 +173,50 @@ button:hover {
     background-color: #0056b3;
 }
 
+#shareButton{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: underline;
+    z-index: 99999;
+}
 
+.hidden {
+    display: none!important;
+}
 
-#modalOverlay {
+.modal {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999;
 }
 
-#shareModal {
-    background: #fff;
-    padding: 20px;
-    width: 80%;
-    max-width: 320px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-}
-
-#shareModal h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
-
-.share-link {
-    display: block;
-    background-color: #f0f0f0;
-    color: #222;
-    font-size: 1rem;
-    margin: 8px 0;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.share-link:hover {
-    background-color: #e0e0e0;
-}
-
-#closeModal {
-    opacity: 0;
-    pointer-events: none;
+.modal-backdrop {
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
 }
 
-#closeModal:hover {
-    background-color: #ffcccc;
+.modal-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 90%;
+    text-align: center;
+    z-index: 10000;
 }
 
-@media (max-width: 480px) {
-    #shareModal {
-        width: 90%;
-    }
-
-    #shareButton {
-        z-index: 99999;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-decoration: underline;
+@media (max-width: 600px) {
+    .modal-content {
+        font-size: 16px;
     }
 }
