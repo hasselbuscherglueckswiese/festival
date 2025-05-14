@@ -95,8 +95,8 @@
                     value="Hier erwarten dich jetzt weitere Information:" /> -->
                 <input type="hidden" name="_append" value="false" />
 
-                <input type="hidden" name="_redirect" value="https://hasselbuscherglueckswiese.github.io/festival" />
-                <!-- <input type="hidden" name="_redirect" value="http://127.0.0.1:5500/index.html?reg=true" /> -->
+                <input type="hidden" name="_redirect"
+                    value="https://hasselbuscherglueckswiese.github.io/festival/?reg=true" />
             </form>
         </div>
 
@@ -206,18 +206,15 @@
             const bnum = document.getElementById('bnum');
             bnum.textContent = decodeURIComponent(escape(atob(bnum.textContent)));
 
-            function saveToStorage(name, value) {
-                localStorage.setItem(name, value);
-            }
+            // function saveToStorage(name, value) {
+            //     localStorage.setItem(name, value);
+            // }
 
-            function getFromStorage(name) {
-                return localStorage.getItem(name)
-            }
+            // function getFromStorage(name) {
+            //     return localStorage.getItem(name)
+            // }
 
-            let registered = getFromStorage('registered');
-            document.getElementById('test').textContent = "TEST: " + registered;
 
-            console.log(localStorage.getItem('registered'));
             if (!registered) {
                 const params = new URLSearchParams(window.location.search);
                 registered = params.get("reg");
@@ -225,7 +222,8 @@
 
 
             function showDetails() {
-                let fullname = getFromStorage('fullname');
+                // let fullname = getFromStorage('fullname');
+                let fullname = null;
                 if (fullname == null || fullname.trim() == '') fullname = "schön dich zu sehen :)"
                 greeting.textContent = fullname;
                 form.reset();
@@ -262,14 +260,15 @@
 
                     console.log(response)
                     if (response.ok) {
-                        e.preventDefault();
                         const fullname = document.getElementById("person").value;
-                        saveToStorage('registered', true);
-                        saveToStorage('fullname', fullname);
-                        showDetails();
+                        // saveToStorage('registered', true);
+                        // saveToStorage('fullname', fullname);
+                        window.location.href = "https://hasselbuscherglueckswiese.github.io/festival/?reg=true";
+                        // showDetails();
                     }
                 } catch (error) {
                     console.log(error)
+                    alert('Ein Fehler ist aufgetreten. Bitte kontaktiere uns...');
                 }
             });
 
