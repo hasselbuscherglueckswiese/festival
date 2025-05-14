@@ -172,3 +172,74 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+
+
+#modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#shareModal {
+    background: #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 320px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+#shareModal h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.share-link {
+    display: block;
+    background-color: #f0f0f0;
+    color: #222;
+    font-size: 1rem;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.share-link:hover {
+    background-color: #e0e0e0;
+}
+
+#closeModal {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+}
+
+#closeModal:hover {
+    background-color: #ffcccc;
+}
+
+@media (max-width: 480px) {
+    #shareModal {
+        width: 90%;
+    }
+
+    #shareButton {
+        z-index: 99999;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-decoration: underline;
+    }
+}

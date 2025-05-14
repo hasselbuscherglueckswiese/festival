@@ -24,7 +24,18 @@
         <nav>
             <h1 class="title" style="color: black; text-align: center;">Festival Hasselbuscher Glückswiese</h1>
 
-            <div id="test"></div>
+            <div id="modalOverlay" style="display: none;">
+                <div id="shareModal">
+                    <div style="color: black;">
+                        Dieser Link darf ausdrücklich nur an eingeladene Friendz geschickt werden, wir vertrauen euch :)
+                    </div>
+
+                    <button onclick="share()" style="margin-top: 10px;">Weitere Friendz einladen</button>
+
+                    <button id="closeModal" style="display: hidden;"></button>
+
+                </div>
+            </div>
         </nav>
 
         <!-- Linkes Bild -->
@@ -47,8 +58,7 @@
         <span style="position: absolute; left: 20px; top:135px; color:black">18 -<br>20.JULI</span>
 
         <!-- Slogan -->
-        <span style="position: absolute; right: 5px; top:80px; color:black; font-size: 10px;">von friendz für
-            friendz</span>
+        <span style="position: absolute; right: 10px; top:70px; color:black; font-size: 10px;" id="shareButton">Teilen mit friendz &#128279;</span>
     </header>
 
 
@@ -224,9 +234,45 @@
                 information.style.display = "block";
             }
 
+            function share() {
+                // if (navigator.share) {
+                //     navigator.share({
+                //         title: 'Festival Hasselbuscher Glückswiese',
+                //         text: 'Von friendz für friendz!',
+                //         url: 'https://hasselbuscherglueckswiese.github.io/festival/'
+                //     })
+                //         .then(() => console.log('Yippie, deine friendz wurden benachrichtigt!'))
+                //         .catch((error) => console.log('Fehler beim Teilen. K', error));
+                // } else {
+                //     alert("Teilen wird von deinem Browser nicht unterstützt: Kopiere diesen Link:\nhttps://hasselbuscherglueckswiese.github.io/festival/");
+                // }
+                const message = encodeURIComponent("Festival Hasselbuscher Glueckswiese");
+                const url = encodeURIComponent('https://hasselbuscherglueckswiese.github.io/festival/');
+                const link = `https://api.whatsapp.com/send?text=${message}%20${url}`;
+                window.open(link, "_blank");
+            }
+
+            const shareButton = document.getElementById('shareButton');
+            const modal = document.getElementById('modalOverlay');
+            const closeModal = document.getElementById('closeModal');
+
+            shareButton.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
             const params = new URLSearchParams(window.location.search);
             const registered = params.get("reg");
-            
+
             if (registered == 'true') {
                 showDetails();
             }
@@ -259,7 +305,6 @@
                         const fullname = document.getElementById("person").value;
                         // saveToStorage('registered', true);
                         // saveToStorage('fullname', fullname);
-                        window.location.href = "https://hasselbuscherglueckswiese.github.io/festival/?reg=true";
                         showDetails();
                     }
                 } catch (error) {
