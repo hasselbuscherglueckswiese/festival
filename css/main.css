@@ -173,7 +173,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-#shareButton{
+#shareButton {
     padding-top: 10px;
     padding-bottom: 10px;
     text-decoration: underline;
@@ -181,7 +181,9 @@ button:hover {
 }
 
 .hidden {
-    display: none!important;
+    display: none !important;
+    display: none;
+    visibility: hidden;
 }
 
 .modal {
